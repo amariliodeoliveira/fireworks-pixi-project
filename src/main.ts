@@ -1,13 +1,11 @@
 import { Application, Assets } from "pixi.js";
 
-import { addBunny } from "./addBunny";
 import { addRockets } from "./addRockets";
 
 const app = new Application();
 
 async function setup() {
-  const container = document.getElementById("pixi-container");
-  if (!container) throw new Error("Container element not found");
+  const container = document.getElementById("pixi-container") as HTMLElement;
 
   await app.init({
     backgroundColor: 0x000000,
@@ -32,6 +30,5 @@ async function preload() {
   await setup();
   await preload();
 
-  addBunny(app);
   addRockets(app);
 })();

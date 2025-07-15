@@ -1,3 +1,5 @@
+import { ColorSource, Sprite } from "pixi.js";
+
 export interface Vector2D {
   x: number;
   y: number;
@@ -8,7 +10,7 @@ export type Velocity = Vector2D;
 
 interface BaseFirework {
   begin: number;
-  colour: number;
+  colour: ColorSource;
   duration: number;
   position: Position;
 }
@@ -21,6 +23,13 @@ export interface RocketFirework extends BaseFirework {
   type: "Rocket";
   velocity: Velocity;
 }
+
+export type RenderableRocket = Sprite & {
+  startTime: number;
+  velocity: Velocity;
+  duration: number;
+  colour: ColorSource;
+};
 
 export type Firework = FountainFirework | RocketFirework;
 export type FireworkType = Firework["type"];
