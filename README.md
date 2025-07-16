@@ -12,7 +12,7 @@
 - A zip file must be provided that includes source code, assets & libraries used, so that it can
   be unzipped directly onto a web server and run without warnings or errors. If your app
   requires additional work to get it to run, instructions should be provided on how to achieve
-  this. 
+  this.
 - The resultant web app should at least work on the latest versions of Chrome and Firefox.
 
 ## When reviewing the solution, we will be evaluating the following aspects

@@ -22,7 +22,6 @@ async function preload() {
   await Assets.load([
     { alias: "rocket", src: "/assets/rocket.png" },
     { alias: "particle", src: "/assets/particle.png" },
-    { alias: "bunny", src: "/assets/bunny.png" },
   ]);
 }
 
