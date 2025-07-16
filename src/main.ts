@@ -1,6 +1,6 @@
 import { Application, Assets } from "pixi.js";
-
 import { addRockets } from "./addRockets";
+import { addFountains } from "./addFountain";
 
 const app = new Application();
 
@@ -22,6 +22,7 @@ async function preload() {
   await Assets.load([
     { alias: "rocket", src: "/assets/rocket.png" },
     { alias: "particle", src: "/assets/particle.png" },
+    { alias: "fountain", src: "/assets/fountain.png" },
   ]);
 }
 
@@ -30,4 +31,5 @@ async function preload() {
   await preload();
 
   addRockets(app);
+  addFountains(app);
 })();

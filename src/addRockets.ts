@@ -1,16 +1,10 @@
-import { Container, Sprite, Application } from "pixi.js";
+import { Sprite, Application } from "pixi.js";
 import { loadFireworks } from "./utils/fireworksParser";
 import { RocketFirework, RenderableRocket } from "./types/firework";
 import { explodeParticles, updateParticles } from "./addParticles";
-import { Time } from "./utils/time";
 
-function createInvertedContainer(app: Application): Container {
-  const container = new Container();
-  container.x = app.screen.width / 2;
-  container.y = app.screen.height / 2;
-  container.scale.y = -1;
-  return container;
-}
+import { Time } from "./utils/time";
+import { createInvertedContainer } from "./utils/createInvertedContainer";
 
 export async function addRockets(app: Application) {
   const rocketContainer = createInvertedContainer(app);

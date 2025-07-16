@@ -31,9 +31,21 @@ export type RenderableRocket = Sprite & {
   colour: ColorSource;
 };
 
+export type RenderableFountain = Sprite & {
+  startTime: number;
+  duration: number;
+  colour: ColorSource;
+};
+
 export type Firework = FountainFirework | RocketFirework;
 export type FireworkType = Firework["type"];
 
 export interface FireworkDisplay {
   fireworks: Firework[];
+}
+
+export interface ParticleType extends Sprite {
+  velocity: Vector2D;
+  duration: number;
+  startTime: number;
 }
