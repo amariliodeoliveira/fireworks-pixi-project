@@ -1,12 +1,6 @@
 import { Container, Sprite, Texture, ColorSource } from "pixi.js";
-import { Vector2D } from "./types/firework";
+import { ParticleType, Vector2D } from "./types/firework";
 import { getRandomInt } from "./utils/math";
-
-interface ParticleType extends Sprite {
-  velocity: Vector2D;
-  duration: number;
-  startTime: number;
-}
 
 export function explodeParticles(
   container: Container,
