@@ -1,6 +1,8 @@
 import { Container, Sprite, Texture, ColorSource } from "pixi.js";
 import { ParticleType } from "../types/firework";
 import { Vector2D } from "../utils/vector";
+import { PARTICLE_CONFIG, EXPLOSION_CONFIG } from "../config/particles";
+import { VISUAL_CONFIG } from "../config/visual";
 
 export function createParticle(
   texture: Texture,
@@ -8,16 +10,20 @@ export function createParticle(
   colour: ColorSource,
   velocity: Vector2D
 ): ParticleType {
-  const particle = new Sprite(texture) as ParticleType;
-  particle.anchor.set(0.5);
+  const particle = Sprite.from(texture) as ParticleType;
+  particle.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
   particle.x = position.x;
   particle.y = position.y;
   particle.tint = colour;
-  particle.blendMode = "add";
+  particle.blendMode = VISUAL_CONFIG.BLEND_MODE;
 
   particle.velocity = velocity;
-  particle.gravity = 300;
-  particle.life = 1.5 + Math.random() * 0.5;
+  particle.gravity = EXPLOSION_CONFIG.GRAVITY;
+  particle.life =
+    PARTICLE_CONFIG.EXPLOSION_LIFETIME_MIN +
+    Math.random() *
+      (PARTICLE_CONFIG.EXPLOSION_LIFETIME_MAX -
+        PARTICLE_CONFIG.EXPLOSION_LIFETIME_MIN);
   particle.startTime = performance.now();
 
   return particle;
@@ -29,11 +35,19 @@ export function explodeParticles(
   colour: ColorSource
 ) {
   const texture = Texture.from("particle");
-  const particleCount = 20 + Math.floor(Math.random() * 31);
+  const particleCount =
+    EXPLOSION_CONFIG.PARTICLE_COUNT_MIN +
+    Math.floor(
+      Math.random() *
+        (EXPLOSION_CONFIG.PARTICLE_COUNT_MAX -
+          EXPLOSION_CONFIG.PARTICLE_COUNT_MIN)
+    );
 
   for (let i = 0; i < particleCount; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = 100 + Math.random() * 200;
+    const speed =
+      EXPLOSION_CONFIG.SPEED_MIN +
+      Math.random() * (EXPLOSION_CONFIG.SPEED_MAX - EXPLOSION_CONFIG.SPEED_MIN);
 
     const velocity = Vector2D.fromAngle(angle, speed);
 

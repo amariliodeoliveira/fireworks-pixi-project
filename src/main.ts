@@ -1,7 +1,6 @@
 import { Application, Assets } from "pixi.js";
-import { addRockets } from "./lib/rocket";
-import { addFountains } from "./lib/fountain";
 import { loadFireworks } from "./services/fireworksService";
+import { startFireworkLoop } from "./services/showService";
 
 const app = new Application();
 
@@ -28,10 +27,13 @@ async function preload() {
 }
 
 (async () => {
-  await setup();
-  await preload();
+  try {
+    await setup();
+    await preload();
 
-  const fireworksData = await loadFireworks();
-  addRockets(app, fireworksData);
-  addFountains(app, fireworksData);
+    const fireworksData = await loadFireworks();
+    startFireworkLoop(app, fireworksData);
+  } catch (error) {
+    console.error("Error starting application:", error);
+  }
 })();

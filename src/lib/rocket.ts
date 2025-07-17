@@ -7,6 +7,7 @@ import {
 import { Vector2D } from "../utils/vector";
 import { createCartesianContainer } from "../utils/createCartesianContainer";
 import { explodeParticles, updateParticles } from "./particles";
+import { VISUAL_CONFIG } from "../config/visual";
 
 export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   const rocketContainer = createCartesianContainer(app);
@@ -20,8 +21,8 @@ export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   rockets.forEach(({ position, velocity, duration, begin, colour }) => {
     setTimeout(() => {
       const rocket = Sprite.from("rocket") as RenderableRocket;
-      rocket.anchor.set(0.5);
-      rocket.blendMode = "add";
+      rocket.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
+      rocket.blendMode = VISUAL_CONFIG.BLEND_MODE;
       rocket.tint = colour;
       rocket.colour = colour;
       rocket.x = position.x;
