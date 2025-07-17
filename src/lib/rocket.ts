@@ -1,17 +1,19 @@
 import { Application, Container, Sprite } from "pixi.js";
-import { loadFireworks } from "../utils/fireworksParser";
-import { RocketFirework, RenderableRocket } from "../types/firework";
+import {
+  RocketFirework,
+  RenderableRocket,
+  FireworkDisplay,
+} from "../types/firework";
 import { Vector2D } from "../utils/vector";
 import { createCartesianContainer } from "../utils/createCartesianContainer";
 import { explodeParticles, updateParticles } from "./particles";
 
-export async function addRockets(app: Application) {
+export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   const rocketContainer = createCartesianContainer(app);
   const particleContainer = createCartesianContainer(app);
   app.stage.addChild(rocketContainer, particleContainer);
 
-  const loadedFireworks = await loadFireworks();
-  const rockets = loadedFireworks.fireworks.filter(
+  const rockets = fireworksData.fireworks.filter(
     (fw): fw is RocketFirework => fw.type === "Rocket"
   );
 
