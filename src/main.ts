@@ -1,11 +1,11 @@
-import { Application, Assets } from "pixi.js";
-import { loadFireworks } from "@/services/fireworksService";
-import { startFireworkLoop } from "@/services/showService";
+import { Application, Assets } from 'pixi.js';
+import { loadFireworks } from '@/services/fireworksService';
+import { startFireworkLoop } from '@/services/showService';
 
 const app = new Application();
 
 async function setup() {
-  const container = document.getElementById("pixi-container") as HTMLElement;
+  const container = document.getElementById('pixi-container') as HTMLElement;
 
   await app.init({
     backgroundColor: 0x000000,
@@ -14,15 +14,15 @@ async function setup() {
     resizeTo: window,
   });
 
-  container.innerHTML = "";
+  container.innerHTML = '';
   container.appendChild(app.canvas);
 }
 
 async function preload() {
   await Assets.load([
-    { alias: "rocket", src: "/assets/rocket.png" },
-    { alias: "particle", src: "/assets/particle.png" },
-    { alias: "fountain", src: "/assets/fountain.png" },
+    { alias: 'rocket', src: '/assets/rocket.png' },
+    { alias: 'particle', src: '/assets/particle.png' },
+    { alias: 'fountain', src: '/assets/fountain.png' },
   ]);
 }
 
@@ -34,6 +34,6 @@ async function preload() {
     const fireworksData = await loadFireworks();
     startFireworkLoop(app, fireworksData);
   } catch (error) {
-    console.error("Error starting application:", error);
+    console.error('Error starting application:', error);
   }
 })();

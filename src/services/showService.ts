@@ -1,9 +1,9 @@
-import type { Application } from "pixi.js";
+import type { Application } from 'pixi.js';
 
-import { MAX_PARTICLE_LIFETIME } from "@/config/particles";
-import { addFountains } from "@/lib/fountain";
-import { addRockets } from "@/lib/rocket";
-import type { FireworkDisplay } from "@/types/firework";
+import { MAX_PARTICLE_LIFETIME } from '@/config/particles';
+import { addFountains } from '@/lib/fountain';
+import { addRockets } from '@/lib/rocket';
+import type { FireworkDisplay } from '@/types/firework';
 
 let showDuration = 0;
 let showStartTime = 0;
@@ -39,7 +39,7 @@ function checkRestart(app: Application, fireworksData: FireworkDisplay) {
 
 export function startFireworkLoop(
   app: Application,
-  fireworksData: FireworkDisplay
+  fireworksData: FireworkDisplay,
 ) {
   showDuration = calculateShowDuration(fireworksData);
   startShow(app, fireworksData);

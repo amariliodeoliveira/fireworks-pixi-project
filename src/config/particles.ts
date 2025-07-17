@@ -1,4 +1,4 @@
-import { PHYSICS_CONFIG } from "./physics";
+import { PHYSICS_CONFIG } from './physics';
 
 export const PARTICLE_CONFIG = {
   EXPLOSION_LIFETIME_MIN: 1.5,
@@ -29,5 +29,5 @@ export const FOUNTAIN_CONFIG = {
 export const MAX_PARTICLE_LIFETIME =
   Math.max(
     PARTICLE_CONFIG.EXPLOSION_LIFETIME_MAX,
-    PARTICLE_CONFIG.FOUNTAIN_LIFETIME_MAX
+    PARTICLE_CONFIG.FOUNTAIN_LIFETIME_MAX,
   ) * 1000;

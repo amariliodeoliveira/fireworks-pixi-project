@@ -1,17 +1,17 @@
-import { Application, Container, Sprite } from "pixi.js";
+import { Application, Container, Sprite } from 'pixi.js';
 
-import { PARTICLE_CONFIG, FOUNTAIN_CONFIG } from "@/config/particles";
-import { VISUAL_CONFIG } from "@/config/visual";
+import { PARTICLE_CONFIG, FOUNTAIN_CONFIG } from '@/config/particles';
+import { VISUAL_CONFIG } from '@/config/visual';
 import {
   FountainFirework,
   RenderableFountain,
   ParticleType,
   FireworkDisplay,
-} from "@/types/firework";
-import { createCartesianContainer } from "@/utils/createCartesianContainer";
-import { Vector2D } from "@/utils/vector";
+} from '@/types/firework';
+import { createCartesianContainer } from '@/utils/createCartesianContainer';
+import { Vector2D } from '@/utils/vector';
 
-import { updateParticles } from "./particles";
+import { updateParticles } from './particles';
 
 export function addFountains(app: Application, fireworksData: FireworkDisplay) {
   const fountainContainer = createCartesianContainer(app);
@@ -19,12 +19,12 @@ export function addFountains(app: Application, fireworksData: FireworkDisplay) {
   app.stage.addChild(fountainContainer, particleContainer);
 
   const fountains = fireworksData.fireworks.filter(
-    (fw): fw is FountainFirework => fw.type === "Fountain"
+    (fw): fw is FountainFirework => fw.type === 'Fountain',
   );
 
   fountains.forEach(({ position, duration, begin, colour }) => {
     setTimeout(() => {
-      const fountain = Sprite.from("fountain") as RenderableFountain;
+      const fountain = Sprite.from('fountain') as RenderableFountain;
       fountain.anchor.set(0.5);
       fountain.blendMode = VISUAL_CONFIG.BLEND_MODE;
       fountain.tint = colour;
@@ -49,7 +49,7 @@ export function addFountains(app: Application, fireworksData: FireworkDisplay) {
 function updateFountains(
   fountainContainer: Container,
   particleContainer: Container,
-  now: number
+  now: number,
 ) {
   for (let i = fountainContainer.children.length - 1; i >= 0; i--) {
     const fountain = fountainContainer.children[i] as RenderableFountain;
@@ -66,7 +66,7 @@ function updateFountains(
 
 function emitFountainParticles(
   particleContainer: Container,
-  fountain: RenderableFountain
+  fountain: RenderableFountain,
 ) {
   const particlesPerFrame = FOUNTAIN_CONFIG.PARTICLES_PER_FRAME;
 
@@ -77,7 +77,7 @@ function emitFountainParticles(
       FOUNTAIN_CONFIG.SPEED_MIN +
       Math.random() * (FOUNTAIN_CONFIG.SPEED_MAX - FOUNTAIN_CONFIG.SPEED_MIN);
 
-    const particle = Sprite.from("particle") as ParticleType;
+    const particle = Sprite.from('particle') as ParticleType;
     particle.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
     particle.x =
       fountain.x + (Math.random() - 0.5) * FOUNTAIN_CONFIG.SPAWN_RADIUS;

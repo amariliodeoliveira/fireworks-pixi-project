@@ -1,4 +1,4 @@
-import { Application, Container } from "pixi.js";
+import { Application, Container } from 'pixi.js';
 
 interface CartesianContainerOptions {
   centerX?: number;
@@ -8,7 +8,7 @@ interface CartesianContainerOptions {
 
 export function createCartesianContainer(
   app: Application,
-  options: CartesianContainerOptions = {}
+  options: CartesianContainerOptions = {},
 ): Container {
   const container = new Container();
 
