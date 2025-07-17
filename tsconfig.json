@@ -14,6 +14,17 @@
     "moduleDetection": "force",
     "noEmit": true,
 
+    /* Path mapping */
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@/config/*": ["config/*"],
+      "@/lib/*": ["lib/*"],
+      "@/services/*": ["services/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
+    },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
