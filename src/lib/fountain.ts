@@ -8,6 +8,8 @@ import {
 import { Vector2D } from "../utils/vector";
 import { createCartesianContainer } from "../utils/createCartesianContainer";
 import { updateParticles } from "./particles";
+import { PARTICLE_CONFIG, FOUNTAIN_CONFIG } from "../config/particles";
+import { VISUAL_CONFIG } from "../config/visual";
 
 export function addFountains(app: Application, fireworksData: FireworkDisplay) {
   const fountainContainer = createCartesianContainer(app);
@@ -22,7 +24,7 @@ export function addFountains(app: Application, fireworksData: FireworkDisplay) {
     setTimeout(() => {
       const fountain = Sprite.from("fountain") as RenderableFountain;
       fountain.anchor.set(0.5);
-      fountain.blendMode = "add";
+      fountain.blendMode = VISUAL_CONFIG.BLEND_MODE;
       fountain.tint = colour;
       fountain.x = position.x;
       fountain.y = position.y;
@@ -64,25 +66,32 @@ function emitFountainParticles(
   particleContainer: Container,
   fountain: RenderableFountain
 ) {
-  const particlesPerFrame = 5;
+  const particlesPerFrame = FOUNTAIN_CONFIG.PARTICLES_PER_FRAME;
 
   for (let i = 0; i < particlesPerFrame; i++) {
-    const fountainConeAngle = Math.PI / 6;
+    const fountainConeAngle = FOUNTAIN_CONFIG.CONE_ANGLE;
     const angle = -Math.PI / 2 + (Math.random() * 2 - 1) * fountainConeAngle;
-    const particleSpeed = 120 + Math.random() * 80;
+    const particleSpeed =
+      FOUNTAIN_CONFIG.SPEED_MIN +
+      Math.random() * (FOUNTAIN_CONFIG.SPEED_MAX - FOUNTAIN_CONFIG.SPEED_MIN);
 
     const particle = Sprite.from("particle") as ParticleType;
-    particle.anchor.set(0.5);
-    particle.x = fountain.x + (Math.random() - 0.5) * 20;
+    particle.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
+    particle.x =
+      fountain.x + (Math.random() - 0.5) * FOUNTAIN_CONFIG.SPAWN_RADIUS;
     particle.y = fountain.y;
     particle.tint = fountain.colour;
-    particle.blendMode = "add";
+    particle.blendMode = VISUAL_CONFIG.BLEND_MODE;
 
     particle.velocity = Vector2D.fromAngle(angle, particleSpeed);
     particle.velocity.y = -particle.velocity.y;
 
-    particle.gravity = 200;
-    particle.life = 1.2 + Math.random() * 0.8;
+    particle.gravity = FOUNTAIN_CONFIG.GRAVITY;
+    particle.life =
+      PARTICLE_CONFIG.FOUNTAIN_LIFETIME_MIN +
+      Math.random() *
+        (PARTICLE_CONFIG.FOUNTAIN_LIFETIME_MAX -
+          PARTICLE_CONFIG.FOUNTAIN_LIFETIME_MIN);
     particle.startTime = performance.now();
 
     particleContainer.addChild(particle);
