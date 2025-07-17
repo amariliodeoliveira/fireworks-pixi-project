@@ -85,3 +85,63 @@ An example solution (as a windows executable) should have been provided alongsid
 that will allow you to see how the XML data can be visualised. It is not a requirement to copy the
 graphical style of the provided example, although you may use the graphics files from the example if
 you wish.
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm
+
+### Installation & Setup
+```bash
+# Clone the repository
+git clone https://github.com/amariliodeoliveira/fireworks-pixi-project.git
+cd fireworks-pixi-project
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The application will be available at `http://localhost:8080`
+
+### Build for Production
+```bash
+npm run build
+```
+
+## 🛠️ Technologies Used
+
+- **PixiJS** - 2D WebGL renderer for smooth animations
+- **TypeScript** - Type-safe JavaScript with modern features
+- **Vite** - Fast build tool and development server
+- **ESLint + Prettier** - Code quality and formatting
+
+## 📁 Project Structure
+
+```
+src/
+├── config/          # Configuration constants
+├── lib/            # Core firework implementations
+├── services/       # Data loading and show management
+├── types/          # TypeScript type definitions
+└── utils/          # Utility functions
+
+public/
+├── assets/         # Visual assets (sprites)
+├── data/          # Configuration files (fireworks.xml)
+└── favicon.ico    # Site icon
+```
+
+## 🔧 Development Commands
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run lint     # Run ESLint
+npm start        # Alias for npm run dev
+```
