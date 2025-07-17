@@ -1,15 +1,17 @@
 import { Application, Container, Sprite } from "pixi.js";
+
+import { PARTICLE_CONFIG, FOUNTAIN_CONFIG } from "@/config/particles";
+import { VISUAL_CONFIG } from "@/config/visual";
 import {
   FountainFirework,
   RenderableFountain,
   ParticleType,
   FireworkDisplay,
-} from "../types/firework";
-import { Vector2D } from "../utils/vector";
-import { createCartesianContainer } from "../utils/createCartesianContainer";
+} from "@/types/firework";
+import { createCartesianContainer } from "@/utils/createCartesianContainer";
+import { Vector2D } from "@/utils/vector";
+
 import { updateParticles } from "./particles";
-import { PARTICLE_CONFIG, FOUNTAIN_CONFIG } from "../config/particles";
-import { VISUAL_CONFIG } from "../config/visual";
 
 export function addFountains(app: Application, fireworksData: FireworkDisplay) {
   const fountainContainer = createCartesianContainer(app);

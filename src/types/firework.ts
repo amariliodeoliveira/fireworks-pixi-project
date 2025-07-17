@@ -1,5 +1,5 @@
 import { ColorSource, Sprite } from "pixi.js";
-import { Vector2D } from "../utils/vector";
+import { Vector2D } from "@/utils/vector";
 
 interface BaseFirework {
   readonly begin: number;

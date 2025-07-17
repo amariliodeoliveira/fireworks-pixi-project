@@ -1,5 +1,5 @@
-import type { FireworkDisplay } from "../types/firework";
-import { parseFireworksXML } from "../utils/fireworksParser";
+import type { FireworkDisplay } from "@/types/firework";
+import { parseFireworksXML } from "@/utils/fireworksParser";
 
 export async function loadFireworks(): Promise<FireworkDisplay> {
   try {

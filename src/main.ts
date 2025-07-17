@@ -1,6 +1,6 @@
 import { Application, Assets } from "pixi.js";
-import { loadFireworks } from "./services/fireworksService";
-import { startFireworkLoop } from "./services/showService";
+import { loadFireworks } from "@/services/fireworksService";
+import { startFireworkLoop } from "@/services/showService";
 
 const app = new Application();
 

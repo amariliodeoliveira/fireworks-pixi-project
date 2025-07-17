@@ -1,8 +1,9 @@
 import type { Application } from "pixi.js";
-import { addRockets } from "../lib/rocket";
-import { addFountains } from "../lib/fountain";
-import type { FireworkDisplay } from "../types/firework";
-import { MAX_PARTICLE_LIFETIME } from "../config/particles";
+
+import { MAX_PARTICLE_LIFETIME } from "@/config/particles";
+import { addFountains } from "@/lib/fountain";
+import { addRockets } from "@/lib/rocket";
+import type { FireworkDisplay } from "@/types/firework";
 
 let showDuration = 0;
 let showStartTime = 0;

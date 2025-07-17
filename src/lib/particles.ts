@@ -1,8 +1,9 @@
 import { Container, Sprite, Texture, ColorSource } from "pixi.js";
-import { ParticleType } from "../types/firework";
-import { Vector2D } from "../utils/vector";
-import { PARTICLE_CONFIG, EXPLOSION_CONFIG } from "../config/particles";
-import { VISUAL_CONFIG } from "../config/visual";
+
+import { PARTICLE_CONFIG, EXPLOSION_CONFIG } from "@/config/particles";
+import { VISUAL_CONFIG } from "@/config/visual";
+import { ParticleType } from "@/types/firework";
+import { Vector2D } from "@/utils/vector";
 
 export function createParticle(
   texture: Texture,

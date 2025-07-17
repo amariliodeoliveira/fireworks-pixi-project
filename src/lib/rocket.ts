@@ -1,13 +1,15 @@
 import { Application, Container, Sprite } from "pixi.js";
+
+import { VISUAL_CONFIG } from "@/config/visual";
 import {
   RocketFirework,
   RenderableRocket,
   FireworkDisplay,
-} from "../types/firework";
-import { Vector2D } from "../utils/vector";
-import { createCartesianContainer } from "../utils/createCartesianContainer";
+} from "@/types/firework";
+import { createCartesianContainer } from "@/utils/createCartesianContainer";
+import { Vector2D } from "@/utils/vector";
+
 import { explodeParticles, updateParticles } from "./particles";
-import { VISUAL_CONFIG } from "../config/visual";
 
 export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   const rocketContainer = createCartesianContainer(app);
