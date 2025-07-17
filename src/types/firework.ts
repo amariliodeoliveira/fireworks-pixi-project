@@ -1,51 +1,45 @@
 import { ColorSource, Sprite } from "pixi.js";
-
-export interface Vector2D {
-  x: number;
-  y: number;
-}
-
-export type Position = Vector2D;
-export type Velocity = Vector2D;
+import { Vector2D } from "../utils/vector";
 
 interface BaseFirework {
-  begin: number;
-  colour: ColorSource;
-  duration: number;
-  position: Position;
+  readonly begin: number;
+  readonly colour: ColorSource;
+  readonly duration: number;
+  readonly position: Vector2D;
 }
 
 export interface FountainFirework extends BaseFirework {
-  type: "Fountain";
+  readonly type: "Fountain";
 }
 
 export interface RocketFirework extends BaseFirework {
-  type: "Rocket";
-  velocity: Velocity;
+  readonly type: "Rocket";
+  readonly velocity: Vector2D;
 }
-
-export type RenderableRocket = Sprite & {
-  startTime: number;
-  velocity: Velocity;
-  duration: number;
-  colour: ColorSource;
-};
-
-export type RenderableFountain = Sprite & {
-  startTime: number;
-  duration: number;
-  colour: ColorSource;
-};
 
 export type Firework = FountainFirework | RocketFirework;
 export type FireworkType = Firework["type"];
 
 export interface FireworkDisplay {
-  fireworks: Firework[];
+  readonly fireworks: readonly Firework[];
 }
+
+interface RenderableFirework {
+  startTime: number;
+  duration: number;
+  colour: ColorSource;
+}
+
+export type RenderableRocket = Sprite &
+  RenderableFirework & {
+    velocity: Vector2D;
+  };
+
+export type RenderableFountain = Sprite & RenderableFirework;
 
 export interface ParticleType extends Sprite {
   velocity: Vector2D;
-  duration: number;
+  gravity: number;
+  life: number;
   startTime: number;
 }
