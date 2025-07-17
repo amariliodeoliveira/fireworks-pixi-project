@@ -1,8 +1,8 @@
 import { Application, Assets } from "pixi.js";
-import { addRockets } from "./addRockets";
-import { addFountains } from "./addFountain";
+import { FireworksManager } from "./managers/FireworksManager";
 
 const app = new Application();
+let fireworksManager: FireworksManager;
 
 async function setup() {
   const container = document.getElementById("pixi-container") as HTMLElement;
@@ -30,6 +30,6 @@ async function preload() {
   await setup();
   await preload();
 
-  addRockets(app);
-  addFountains(app);
+  fireworksManager = new FireworksManager(app);
+  await fireworksManager.initialize();
 })();
