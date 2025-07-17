@@ -1,15 +1,15 @@
-import { Application, Container, Sprite } from "pixi.js";
+import { Application, Container, Sprite } from 'pixi.js';
 
-import { VISUAL_CONFIG } from "@/config/visual";
+import { VISUAL_CONFIG } from '@/config/visual';
 import {
   RocketFirework,
   RenderableRocket,
   FireworkDisplay,
-} from "@/types/firework";
-import { createCartesianContainer } from "@/utils/createCartesianContainer";
-import { Vector2D } from "@/utils/vector";
+} from '@/types/firework';
+import { createCartesianContainer } from '@/utils/createCartesianContainer';
+import { Vector2D } from '@/utils/vector';
 
-import { explodeParticles, updateParticles } from "./particles";
+import { explodeParticles, updateParticles } from './particles';
 
 export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   const rocketContainer = createCartesianContainer(app);
@@ -17,12 +17,12 @@ export function addRockets(app: Application, fireworksData: FireworkDisplay) {
   app.stage.addChild(rocketContainer, particleContainer);
 
   const rockets = fireworksData.fireworks.filter(
-    (fw): fw is RocketFirework => fw.type === "Rocket"
+    (fw): fw is RocketFirework => fw.type === 'Rocket',
   );
 
   rockets.forEach(({ position, velocity, duration, begin, colour }) => {
     setTimeout(() => {
-      const rocket = Sprite.from("rocket") as RenderableRocket;
+      const rocket = Sprite.from('rocket') as RenderableRocket;
       rocket.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
       rocket.blendMode = VISUAL_CONFIG.BLEND_MODE;
       rocket.tint = colour;
@@ -49,7 +49,7 @@ function updateRockets(
   rocketContainer: Container,
   particleContainer: Container,
   now: number,
-  delta: number
+  delta: number,
 ) {
   for (let i = rocketContainer.children.length - 1; i >= 0; i--) {
     const rocket = rocketContainer.children[i] as RenderableRocket;

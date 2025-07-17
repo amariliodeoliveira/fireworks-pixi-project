@@ -1,5 +1,5 @@
-import { ColorSource, Sprite } from "pixi.js";
-import { Vector2D } from "@/utils/vector";
+import { ColorSource, Sprite } from 'pixi.js';
+import { Vector2D } from '@/utils/vector';
 
 interface BaseFirework {
   readonly begin: number;
@@ -9,16 +9,16 @@ interface BaseFirework {
 }
 
 export interface FountainFirework extends BaseFirework {
-  readonly type: "Fountain";
+  readonly type: 'Fountain';
 }
 
 export interface RocketFirework extends BaseFirework {
-  readonly type: "Rocket";
+  readonly type: 'Rocket';
   readonly velocity: Vector2D;
 }
 
 export type Firework = FountainFirework | RocketFirework;
-export type FireworkType = Firework["type"];
+export type FireworkType = Firework['type'];
 
 export interface FireworkDisplay {
   readonly fireworks: readonly Firework[];

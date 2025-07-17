@@ -1,15 +1,15 @@
-import { Container, Sprite, Texture, ColorSource } from "pixi.js";
+import { Container, Sprite, Texture, ColorSource } from 'pixi.js';
 
-import { PARTICLE_CONFIG, EXPLOSION_CONFIG } from "@/config/particles";
-import { VISUAL_CONFIG } from "@/config/visual";
-import { ParticleType } from "@/types/firework";
-import { Vector2D } from "@/utils/vector";
+import { PARTICLE_CONFIG, EXPLOSION_CONFIG } from '@/config/particles';
+import { VISUAL_CONFIG } from '@/config/visual';
+import { ParticleType } from '@/types/firework';
+import { Vector2D } from '@/utils/vector';
 
 export function createParticle(
   texture: Texture,
   position: Vector2D,
   colour: ColorSource,
-  velocity: Vector2D
+  velocity: Vector2D,
 ): ParticleType {
   const particle = Sprite.from(texture) as ParticleType;
   particle.anchor.set(VISUAL_CONFIG.ANCHOR_CENTER);
@@ -33,15 +33,15 @@ export function createParticle(
 export function explodeParticles(
   container: Container,
   position: Vector2D,
-  colour: ColorSource
+  colour: ColorSource,
 ) {
-  const texture = Texture.from("particle");
+  const texture = Texture.from('particle');
   const particleCount =
     EXPLOSION_CONFIG.PARTICLE_COUNT_MIN +
     Math.floor(
       Math.random() *
         (EXPLOSION_CONFIG.PARTICLE_COUNT_MAX -
-          EXPLOSION_CONFIG.PARTICLE_COUNT_MIN)
+          EXPLOSION_CONFIG.PARTICLE_COUNT_MIN),
     );
 
   for (let i = 0; i < particleCount; i++) {
@@ -60,7 +60,7 @@ export function explodeParticles(
 export function updateParticles(
   container: Container,
   delta: number,
-  now: number
+  now: number,
 ) {
   for (let i = container.children.length - 1; i >= 0; i--) {
     const particle = container.children[i] as ParticleType;
