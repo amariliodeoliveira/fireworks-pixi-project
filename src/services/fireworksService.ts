@@ -3,7 +3,7 @@ import { parseFireworksXML } from '@/utils/fireworksParser';
 
 export async function loadFireworks(): Promise<FireworkDisplay> {
   try {
-    const response = await fetch('/fireworks.xml');
+    const response = await fetch('/data/fireworks.xml');
 
     if (!response.ok) {
       throw new Error(`Failed to load fireworks.xml: ${response.status}`);
