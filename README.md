@@ -88,10 +88,10 @@ you wish.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v20.19+ recommended)
 - npm
 
 ### Installation & Setup
@@ -114,14 +114,14 @@ The application will be available at `http://localhost:8080`
 npm run build
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **PixiJS** - 2D WebGL renderer for smooth animations
 - **TypeScript** - Type-safe JavaScript with modern features
 - **Vite** - Fast build tool and development server
 - **ESLint + Prettier** - Code quality and formatting
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -137,7 +137,7 @@ public/
 └── favicon.ico    # Site icon
 ```
 
-## 🔧 Development Commands
+## Development Commands
 
 ```bash
 npm run dev      # Start development server
