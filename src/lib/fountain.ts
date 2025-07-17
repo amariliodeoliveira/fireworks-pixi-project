@@ -1,21 +1,20 @@
 import { Application, Container, Sprite } from "pixi.js";
-import { loadFireworks } from "../utils/fireworksParser";
 import {
   FountainFirework,
   RenderableFountain,
   ParticleType,
+  FireworkDisplay,
 } from "../types/firework";
 import { Vector2D } from "../utils/vector";
 import { createCartesianContainer } from "../utils/createCartesianContainer";
 import { updateParticles } from "./particles";
 
-export async function addFountains(app: Application) {
+export function addFountains(app: Application, fireworksData: FireworkDisplay) {
   const fountainContainer = createCartesianContainer(app);
   const particleContainer = createCartesianContainer(app);
   app.stage.addChild(fountainContainer, particleContainer);
 
-  const loadedFireworks = await loadFireworks();
-  const fountains = loadedFireworks.fireworks.filter(
+  const fountains = fireworksData.fireworks.filter(
     (fw): fw is FountainFirework => fw.type === "Fountain"
   );
 

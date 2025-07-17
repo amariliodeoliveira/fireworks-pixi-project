@@ -4,12 +4,14 @@ import type {
   Firework,
 } from "../types/firework";
 
-export async function loadFireworks(): Promise<FireworkDisplay> {
-  const response = await fetch("/fireworks.xml");
-  const text = await response.text();
-
+export function parseFireworksXML(xmlText: string): FireworkDisplay {
   const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(text, "application/xml");
+  const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+  const parseError = xmlDoc.querySelector("parsererror");
+  if (parseError) {
+    throw new Error("Invalid XML format");
+  }
 
   return parseFireworkDisplay(xmlDoc);
 }
